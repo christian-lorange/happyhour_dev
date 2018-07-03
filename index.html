@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>HHAp - Fort Collins</title>
+
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+
+  <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+
+  <script type="text/javascript" src="js/hh.js"></script> 
+
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+<script type="text/javascript">
+  window.onload = function() {
+console.log("Hello world!");
+}
+</script>
+
+  <script type="text/javascript">
+
+
+    $(function(){
+      
+var $filterCheckboxes = $('input[type="checkbox"]');
+
+$filterCheckboxes.on('change', function() {
+
+  var selectedFilters = {};
+
+  $filterCheckboxes.filter(':checked').each(function() {
+
+    if (!selectedFilters.hasOwnProperty(this.name)) {
+      selectedFilters[this.name] = [];
+    }
+
+    selectedFilters[this.name].push(this.value);
+
+  });
+
+  // create a collection containing all of the filterable elements
+  var $filteredResults = $('.venue');
+
+  // loop over the selected filter name -> (array) values pairs
+  $.each(selectedFilters, function(name, filterValues) {
+
+    // filter each .venue element
+    $filteredResults = $filteredResults.filter(function() {
+
+      var matched = false,
+        currentFilterValues = $(this).data('category').split(' ');
+
+      // loop over each category value in the current .venue's data-category
+      $.each(currentFilterValues, function(_, currentFilterValue) {
+
+        // if the current category exists in the selected filters array
+        // set matched to true, and stop looping. as we're ORing in each
+        // set of filters, we only need to match once
+
+        if ($.inArray(currentFilterValue, filterValues) != -1) {
+          matched = true;
+          return false;
+        }
+      });
+
+      // if matched is true the current .venue element is returned
+      return matched;
+
+    });
+  });
+
+  $('.venue').hide().filter($filteredResults).show();
+
+});
+
+
+    });
+
+</script>
+
+
+<script type="text/javascript">
+
+ 
+  function days() {
+
+    $('#venues').load('https://rawgit.com/christian-lorange/HappyHour/master/www/js/hh.html');
+
+
+   var d = new Date();
+   var n = d.getDay();
+
+   var now = new Date();
+   var l = now.getDay();
+   var today = new Date().getHours();
+
+   var weekday=new Array(7);
+       weekday[0]="sunday";
+       weekday[1]="monday";
+       weekday[2]="tuesday";
+       weekday[3]="wednesday";
+       weekday[4]="thursday";
+       weekday[5]="friday";
+       weekday[6]="saturday";
+       
+
+
+   var elements = document.getElementsByClassName(weekday[d.getDay()]);
+    for(i=0; i<elements.length; i++) {
+      elements[i].style.display =    'inline';
+            console.log('test')
+
+            if (today >=hh[i][l][1] && today <= hh[i][l][2]) {
+               elements[i].style.color = 'blue';
+               elements[i].style.fontSize='1.4em';
+               elements[i].parentElement.style.backgroundColor='#adc5ed';
+            } else {
+              
+            }
+
+    }
+}
+</script>
+
+
+<script>
+// Open the Modal
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+
+// Close the Modal
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  
+  }
+</script>
+
+
+
+
+</head>
+<body onload="days();">
+
+  <script type="text/javascript">
+    function myFunction() {
+  var input = document.getElementById("Search");
+  var filter = input.value.toLowerCase();
+  var nodes = document.getElementsByClassName('venue');
+
+  for (i = 0; i < nodes.length; i++) {
+    if (nodes[i].innerText.toLowerCase().includes(filter)) {
+      nodes[i].style.display = "block";
+    } else {
+      nodes[i].style.display = "none";
+    }
+  }
+}
+  </script>
+
+   <!-- Fixed navbar -->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">HHAp For Collins</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Table View</a></li>
+            <li><a href="map.html">Map View</a></li>
+          </ul>
+          </div>
+    </div><!-- /.navbar-collapse -->
+
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Happy Hour - Fort Collins
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Filter Results
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <div class="venues-wrap">
+
+  <h3 class="filter_style">Area</h3>
+  <form>
+    <label class="cat_style">
+      <input type="checkbox" name="loc" value="old" id="old" /> Old Town</label>
+    <br>
+    <label class="cat_style">
+      <input type="checkbox" name="loc" value="midtown" id="midtown" /> Midtown</label>
+    <br>
+    <label class="cat_style">
+      <input type="checkbox" name="loc" value="campus" id="campus" /> Near Campus</label>
+    <br>
+    <label class="cat_style">
+      <input type="checkbox" name="loc" value="cwest" id="cwest" /> Campus West</label>
+    <br>
+    <label class="cat_style">
+      <input type="checkbox" name="loc" value="nfoco" id="nfoco" /> North FoCo</label>
+    <br>
+    <label class="cat_style">
+      <input type="checkbox" name="loc" value="sfoco" id="sfoco" /> South FoCo</label>
+  </form>
+  
+ <h3 class="filter_style">Price Range</h3>
+  <form>
+    <label class="cat_style">
+      <input type="checkbox" name="price" value="low" id="low" /> $</label>
+    <br>
+    <label class="cat_style">
+      <input type="checkbox" name="price" value="med" id="med" /> $$</label>
+    <br>
+    <label class="cat_style">
+      <input type="checkbox" name="price" value="high" id="high" /> $$$</label>
+  </form>
+
+</div>
+
+<div class="venues-wrap">
+
+  <h3 class="filter_style">Ammenities</h3>
+  <form>
+    <label class="cat_style">
+      <img class="filter" src="img/outdoor.png"><input type="checkbox" name="ammen1" value="outdoor" id="outdoor" />Outdoor Seating 
+    </label>
+    <br>
+    <label class="cat_style">
+     <img class="filter" src="img/pets.png"> <input type="checkbox" name="ammen2" value="pet" id="pet" />Pet Friendly 
+    </label>
+    <br>
+    <label class="cat_style">
+    <img class="filter" src="img/drinkicon.png">  <input type="checkbox" name="ammen3" value="kid" id="kid" />Kid Meal Discounts 
+    </label>
+  </form>
+
+</div>
+
+<div class="venues-wrap">
+
+  <h3 class="filter_style">Happy Hour Deals</h3>
+  <form>
+    <label class="cat_style">
+      <img class="filter" src="img/drinkicon.png"><input type="checkbox" name="hh1" value="drink" id="drink" />Drink Deals 
+    </label>
+    <br>
+    <label class="cat_style">
+     <img class="filter" src="img/foodicon.png"> <input type="checkbox" name="hh2" value="food" id="food" />Food Deals 
+    </label>
+  </form>
+
+</div>
+
+<div class="continents-wrap">
+
+  <h3 class="filter_style">Ease of Parking</h3>
+
+   <form>
+    <label class="cat_style">
+     <img class="filter" src="img/easy.png"> <input type="checkbox" name="park1" value="easy" id="easy" />Easy 
+    </label>
+    <br>
+    <label class="cat_style">
+    <img class="filter" src="img/medium.png">  <input type="checkbox" name="park2" value="medium" id="medium" />Medium 
+    </label>
+    <br>
+    <label class="cat_style">
+     <img class="filter" src="img/hard.png"> <input type="checkbox" name="park3" value="hard" id="hard" />Hard 
+    </label>
+  </form>
+
+</div>
+
+
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+<table align="center" width="100vw">
+  <tr>
+    <td style="padding-right: 10px">
+      <input type="text" id="Search" onkeyup="myFunction()" placeholder="Filter by Term" title="Type in a name" style="text-align: center;">
+    </td>
+  </tr>
+</table>
+
+<!--<div class="key">
+  <div >
+    <span class="location_key">Location</span><span class="area">Area</span> <span style="text-align: center; float: right;">Today's Happy Hour</span><br><span style="text-align: center; width: 100%; float: right;">Location Ammenities</span>
+  </div>
+
+</div>-->
+
+
+
+<div class="venues" id="venues">
+
+</div>
+
+
+
+
+<!-- The Modal/Lightbox -->
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+
+    <!-- Caption text -->
+    <div class="caption-container">
+      <p id="caption">dfasdfasdfasdfasdf</p>
+    </div>
+
+
+  </div>
+</div>
+
+  
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "n3EmN"
+      }], "*")
+    }
+  </script>
+</body>
+</html>
