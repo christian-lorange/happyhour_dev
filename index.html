@@ -18,120 +18,14 @@
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
   <script type="text/javascript" src="js/hh.js"></script> 
+  <script type="text/javascript" src="js/resources.js"></script> 
+
 
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 
 
 
-
-<script type="text/javascript">
-
-
-$(function(){
-      
-var $filterCheckboxes = $('input[type="checkbox"]');
-
-$filterCheckboxes.on('change', function() {
-
-  var selectedFilters = {};
-
-  $filterCheckboxes.filter(':checked').each(function() {
-
-    if (!selectedFilters.hasOwnProperty(this.name)) {
-      selectedFilters[this.name] = [];
-    }
-
-    selectedFilters[this.name].push(this.value);
-
-  });
-
-  // create a collection containing all of the filterable elements
-  var $filteredResults = $('.venue');
-
-  // loop over the selected filter name -> (array) values pairs
-  $.each(selectedFilters, function(name, filterValues) {
-
-    // filter each .venue element
-    $filteredResults = $filteredResults.filter(function() {
-
-      var matched = false,
-        currentFilterValues = $(this).data('category').split(' ');
-
-      // loop over each category value in the current .venue's data-category
-      $.each(currentFilterValues, function(_, currentFilterValue) {
-
-        // if the current category exists in the selected filters array
-        // set matched to true, and stop looping. as we're ORing in each
-        // set of filters, we only need to match once
-
-        if ($.inArray(currentFilterValue, filterValues) != -1) {
-          matched = true;
-          return false;
-        }
-      });
-
-      // if matched is true the current .venue element is returned
-      return matched;
-
-    });
-  });
-
-  $('.venue').hide().filter($filteredResults).show();
-
-});
-
-
-    });
-
-</script>
-
-
-<script type="text/javascript">
-
- 
-  function days() {
-
-  //$("#venues").load( "https://rawgit.com/christian-lorange/happyhour_dev/master/hh.html" );
-  $("#modal-content").load("https://rawgit.com/christian-lorange/happyhour_dev/master/cards.html");
-
-   var d = new Date();
-   var n = d.getDay();
-
-   var now = new Date();
-   var l = now.getDay();
-   var today = new Date().getHours();
-
-
-   var weekday=new Array(7);
-       weekday[0]="sunday";
-       weekday[1]="monday";
-       weekday[2]="tuesday";
-       weekday[3]="wednesday";
-       weekday[4]="thursday";
-       weekday[5]="friday";
-       weekday[6]="saturday";
-
-  var hh = {0:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:18}},1:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},2:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},3:{0: {1:15,2:18},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:16,2:18}},4:{0: {1:9,2:24},1: {1:11,2:24},2: {1:11,2:24},3: {1:11,2:24},4: {1:11,2:24},5: {1:11,2:24},6: {1:9,2:24}},5:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},6:{0: {1:0,2:0},1: {1:16,2:19},2: {1:16,2:19},3: {1:16,2:19},4: {1:16,2:19},5: {1:16,2:19},6: {1:0,2:0}},7:{0: {1:15,2:18},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:15,2:18}},8:{0: {1:16,2:24},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:24}},9:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},10:{0: {1:0,2:0},1: {1:15,2:19},2: {1:15,2:19},3: {1:15,2:19},4: {1:15,2:19},5: {1:15,2:19},6: {1:0,2:0}},11:{0: {1:11,2:16},1: {1:11,2:16},2: {1:11,2:16},3: {1:11,2:16},4: {1:11,2:16},5: {1:11,2:16},6: {1:11,2:16}},12:{0: {1:0,2:0},1: {1:10,2:14},2: {1:14,2:19},3: {1:14,2:19},4: {1:14,2:19},5: {1:14,2:19},6: {1:11,2:16}},13:{0: {1:0,2:0},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:0,2:0}},14:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:15,2:18},5: {1:15,2:18},6: {1:15,2:18}},15:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},16:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},17:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:18}},18:{0: {1:21,2:23},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:21,2:23}},19:{0: {1:0,2:0},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:0,2:0}},20:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},21:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:12,2:20},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},22:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},23:{0: {1:0,2:0},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:0,2:0}},24:{0: {1:12,2:19},1: {1:0,2:0},2: {1:0,2:0},3: {1:16,2:21},4: {1:16,2:21},5: {1:0,2:0},6: {1:0,2:0}},25:{0: {1:22,2:24},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:22,2:24},6: {1:22,2:24}},26:{0: {1:0,2:0},1: {1:0,2:0},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:18}},27:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},28:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},29:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},30:{0: {1:0,2:0},1: {1:16.3,2:19},2: {1:16.3,2:19},3: {1:16.3,2:19},4: {1:16.3,2:19},5: {1:16.3,2:19},6: {1:0,2:0}},31:{0: {1:15,2:18},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:15,2:18}},32:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},33:{0: {1:16,2:18},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:15,2:18}},34:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},35:{0: {1:14,2:22},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:18}},36:{0: {1:0,2:0},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:0,2:0}},37:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},38:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},39:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},40:{0: {1:0,2:0},1: {1:16,2:19},2: {1:16,2:19},3: {1:16,2:19},4: {1:16,2:19},5: {1:16,2:19},6: {1:16,2:19}},41:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:0,2:0},6: {1:0,2:0}},42:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},43:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},44:{0: {1:15,2:20},1: {1:15,2:20},2: {1:15,2:20},3: {1:15,2:20},4: {1:15,2:20},5: {1:15,2:20},6: {1:15,2:20}},45:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},46:{0: {1:15,2:19},1: {1:15,2:19},2: {1:15,2:19},3: {1:15,2:19},4: {1:15,2:19},5: {1:15,2:19},6: {1:15,2:19}},47:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:18}},48:{0: {1:15,2:18.3},1: {1:15,2:18.3},2: {1:15,2:18.3},3: {1:15,2:18.3},4: {1:15,2:18.3},5: {1:15,2:18.3},6: {1:15,2:18.3}},49:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},50:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},51:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},52:{0: {1:0,2:0},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:0,2:0},6: {1:0,2:0}},53:{0: {1:16,2:19},1: {1:16,2:19},2: {1:16,2:19},3: {1:16,2:19},4: {1:16,2:19},5: {1:16,2:19},6: {1:0,2:0}},54:{0: {1:11,2:22},1: {1:16,2:18},2: {1:11,2:17.3},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:18}},55:{0: {1:11,2:24},1: {1:15,2:19},2: {1:15,2:19},3: {1:15,2:19},4: {1:15,2:19},5: {1:15,2:19},6: {1:11,2:19}},56:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},57:{0: {1:15,2:18},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:15,2:18}},58:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},59:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},60:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},61:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},62:{0: {1:15,2:18},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:15,2:18}},63:{0: {1:15,2:19},1: {1:11,2:20.3},2: {1:15,2:19},3: {1:15,2:19},4: {1:15,2:19},5: {1:15,2:19},6: {1:15,2:19}},64:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},65:{0: {1:0,2:0},1: {1:15.3,2:18},2: {1:15.3,2:18},3: {1:15.3,2:18},4: {1:15.3,2:18},5: {1:0,2:0},6: {1:0,2:0}},66:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},67:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},68:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},69:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:18}},70:{0: {1:10,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:14,2:18},6: {1:10,2:18}},71:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},72:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},73:{0: {1:0,2:0},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:18}},74:{0: {1:0,2:0},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:0,2:0}},75:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},76:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},77:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},78:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},79:{0: {1:11,2:21},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:0,2:0}},80:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},81:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:24},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:18}},82:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},83:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},84:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},85:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},86:{0: {1:11.3,2:14},1: {1:11,2:14},2: {1:11,2:14},3: {1:11,2:14},4: {1:11,2:14},5: {1:11,2:14},6: {1:11.3,2:14}},87:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},88:{0: {1:0,2:0},1: {1:17,2:18},2: {1:17,2:18},3: {1:17,2:18},4: {1:17,2:18},5: {1:17,2:18},6: {1:0,2:0}},89:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},90:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},91:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},92:{0: {1:0,2:0},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:0,2:0}},93:{0: {1:0,2:0},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:0,2:0}},94:{0: {1:18,2:24},1: {1:0,2:0},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:0,2:0},6: {1:0,2:0}},95:{0: {1:9.3,2:24},1: {1:10.3,2:19},2: {1:10.3,2:19},3: {1:10.3,2:19},4: {1:10.3,2:19},5: {1:10.3,2:19},6: {1:9.3,2:19}},96:{0: {1:0,2:0},1: {1:15,2:19},2: {1:15,2:19},3: {1:15,2:19},4: {1:15,2:19},5: {1:15,2:19},6: {1:0,2:0}},97:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},98:{0: {1:11,2:19},1: {1:11,2:24},2: {1:11,2:23},3: {1:11,2:24},4: {1:11,2:24},5: {1:11,2:19},6: {1:11,2:19}},99:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},100:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},101:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},102:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},103:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},};
-       
-
-
-   var elements = document.getElementsByClassName(weekday[d.getDay()]);
-    for(i=0; i<elements.length; i++) {
-      elements[i].style.display =    'inline';
-
-
-            if (today >=hh[i][l][1] && today <= hh[i][l][2]) {
-               elements[i].style.color = 'blue';
-               elements[i].style.fontSize='1.4em';
-               elements[i].parentElement.style.backgroundColor='#adc5ed';
-            } else {
-              
-            }
-
-    }
-}
-</script>
 
 
 <script>
@@ -372,7 +266,7 @@ function showSlides(n) {
 <div class="venues" id="venues">
    
 
-<div class="venue" data-id="aloe" data-category="hard medium old" onclick="openModal();currentSlide(1)"> <span class="location">Ace Gillett's Lounge</span><span class="area">Old Town</span> <span class="sunday hh_t">4pm-6pm</span><span class="monday hh_t">4pm-6pm</span><span class="tuesday hh_t">4pm-6pm</span><span class="wednesday hh_t">4pm-6pm</span><span class="thursday hh_t">4pm-6pm</span><span class="friday hh_t">4pm-6pm</span><span class="saturday hh_t">4pm-6pm</span><span class="icon"><img src="img/hard.png"></span></div>
+<!--<div class="venue" data-id="aloe" data-category="hard medium old" onclick="openModal();currentSlide(1)"> <span class="location">Ace Gillett's Lounge</span><span class="area">Old Town</span> <span class="sunday hh_t">4pm-6pm</span><span class="monday hh_t">4pm-6pm</span><span class="tuesday hh_t">4pm-6pm</span><span class="wednesday hh_t">4pm-6pm</span><span class="thursday hh_t">4pm-6pm</span><span class="friday hh_t">4pm-6pm</span><span class="saturday hh_t">4pm-6pm</span><span class="icon"><img src="img/hard.png"></span></div>
 <div class="venue" data-id="aloe" data-category="medium low campus" onclick="openModal();currentSlide(2)"> <span class="location">Alley Cat</span><span class="area">Near Campus</span> <span class="sunday hh_t"></span><span class="monday hh_t"></span><span class="tuesday hh_t"></span><span class="wednesday hh_t"></span><span class="thursday hh_t"></span><span class="friday hh_t"></span><span class="saturday hh_t"></span><span class="icon"><img src="img/medium.png"></span></div>
 <div class="venue" data-id="aloe" data-category="outdoor pet easy medium nfoco" onclick="openModal();currentSlide(3)"> <span class="location">Anheuser-Busch Tour Center</span><span class="area">North Foco</span> <span class="sunday hh_t"></span><span class="monday hh_t"></span><span class="tuesday hh_t"></span><span class="wednesday hh_t"></span><span class="thursday hh_t"></span><span class="friday hh_t"></span><span class="saturday hh_t"></span><span class="icon"><img src="img/outdoor.png"><img src="img/pets.png"><img src="img/easy.png"></span></div>
 <div class="venue" data-id="aloe" data-category="outdoor drink food hard medium sfoco" onclick="openModal();currentSlide(4)"> <span class="location">Austin's American Grill</span><span class="area">South Foco</span> <span class="sunday hh_t">3pm-6pm</span><span class="monday hh_t">3pm-6pm</span><span class="tuesday hh_t">3pm-6pm</span><span class="wednesday hh_t">3pm-6pm</span><span class="thursday hh_t">3pm-6pm</span><span class="friday hh_t">3pm-6pm</span><span class="saturday hh_t">4pm-6pm</span><span class="icon"><img src="img/outdoor.png"><img src="img/hard.png"><img src="img/drinkicon.png"><img src="img/foodicon.png"></span></div>
@@ -475,7 +369,7 @@ function showSlides(n) {
 <div class="venue" data-id="aloe" data-category="outdoor pet medium low campus" onclick="openModal();currentSlide(101)"> <span class="location">Wild Boar Coffee</span><span class="area">Near Campus</span> <span class="sunday hh_t"></span><span class="monday hh_t"></span><span class="tuesday hh_t"></span><span class="wednesday hh_t"></span><span class="thursday hh_t"></span><span class="friday hh_t"></span><span class="saturday hh_t"></span><span class="icon"><img src="img/outdoor.png"><img src="img/pets.png"><img src="img/medium.png"></span></div>
 <div class="venue" data-id="aloe" data-category="medium medium old" onclick="openModal();currentSlide(102)"> <span class="location">Wolverine Farm Letterpress & Publick House</span><span class="area">Old Town</span> <span class="sunday hh_t"></span><span class="monday hh_t"></span><span class="tuesday hh_t"></span><span class="wednesday hh_t"></span><span class="thursday hh_t"></span><span class="friday hh_t"></span><span class="saturday hh_t"></span><span class="icon"><img src="img/medium.png"></span></div>
 <div class="venue" data-id="aloe" data-category="easy medium midtown" onclick="openModal();currentSlide(103)"> <span class="location">Youngs Café</span><span class="area">Midtown</span> <span class="sunday hh_t"></span><span class="monday hh_t"></span><span class="tuesday hh_t"></span><span class="wednesday hh_t"></span><span class="thursday hh_t"></span><span class="friday hh_t"></span><span class="saturday hh_t"></span><span class="icon"><img src="img/easy.png"></span></div>
-<div class="venue" data-id="aloe" data-category="outdoor pet medium medium sfoco" onclick="openModal();currentSlide(104)"> <span class="location">Zwei Brewing</span><span class="area">South Foco</span> <span class="sunday hh_t"></span><span class="monday hh_t"></span><span class="tuesday hh_t"></span><span class="wednesday hh_t"></span><span class="thursday hh_t"></span><span class="friday hh_t"></span><span class="saturday hh_t"></span><span class="icon"><img src="img/outdoor.png"><img src="img/pets.png"><img src="img/medium.png"></span></div>
+<div class="venue" data-id="aloe" data-category="outdoor pet medium medium sfoco" onclick="openModal();currentSlide(104)"> <span class="location">Zwei Brewing</span><span class="area">South Foco</span> <span class="sunday hh_t"></span><span class="monday hh_t"></span><span class="tuesday hh_t"></span><span class="wednesday hh_t"></span><span class="thursday hh_t"></span><span class="friday hh_t"></span><span class="saturday hh_t"></span><span class="icon"><img src="img/outdoor.png"><img src="img/pets.png"><img src="img/medium.png"></span></div> -->
 
 
 </div>

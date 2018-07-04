@@ -1,4 +1,4 @@
-<script type="text/javascript">
+
 
 
 $(function(){
@@ -57,15 +57,13 @@ $filterCheckboxes.on('change', function() {
 
     });
 
-</script>
 
 
-<script type="text/javascript">
 
  
   function days() {
 
-  //$("#venues").load( "https://rawgit.com/christian-lorange/happyhour_dev/master/hh.html" );
+  $("#venues").load( "https://rawgit.com/christian-lorange/happyhour_dev/master/hh.html" );
   $("#modal-content").load("https://rawgit.com/christian-lorange/happyhour_dev/master/cards.html");
 
    var d = new Date();
@@ -104,10 +102,7 @@ $filterCheckboxes.on('change', function() {
 
     }
 }
-</script>
 
-
-<script>
 // Open the Modal
 function openModal() {
   document.getElementById('myModal').style.display = "block";
@@ -146,4 +141,3 @@ function showSlides(n) {
   }
    slides[slideIndex-1].style.display = "block";
   }
-</script>
