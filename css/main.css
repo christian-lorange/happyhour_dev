@@ -135,10 +135,12 @@ text-align: right;}
   position: relative;
   background-color: #fefefe;
   margin: auto;
-  padding: 0;
-  width: 100vw;
-  max-width: 1200px;
   margin: 0;
+  padding: 0;
+  width: 94vw;
+  margin-left: 3vw;
+  max-width: 1200px;
+  
 }
 
 /* The Close Button */
@@ -280,6 +282,12 @@ h5.mb-0 {
    height: 30px;
    font-weight: bolder
 }
+
+.footer p {font-size: 0.8em;}
+
+.footer img {margin-right: 16px;
+    margin-left: 2px;}
+
 
 /* Style the tab */
 .tab {
