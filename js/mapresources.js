@@ -279,7 +279,7 @@ var gps=[[40.584597,-105.077343],
   
   //Remove old pins
   for(i=0;i<marker.length;i++) {
-    map.removeLayer(marker[i]);
+    mymap.removeLayer(marker[i]);
     }  
 
 
