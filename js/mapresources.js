@@ -278,8 +278,9 @@ var gps=[[40.584597,-105.077343],
 
   
   //Remove old pins
-  for(i=0;i<marker.length;i++) {
-    mymap.removeLayer(marker[i]);
+  for(i=0;i<gps.length;i++) {
+    L.marker([gps[i][0], gps[i][1]],{icon: icc[i]}).removeFrom(mymap)
+   
     }  
 
 
