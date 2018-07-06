@@ -276,8 +276,17 @@ var gps=[[40.584597,-105.077343],
 "<b>Name:</b>Zwei Brewing<br><b>Address:</b><a href='http://maps.google.com/?q=4612 S. Mason St., Suite 120, Fort Collins, CO 80525' target='_blank' title='Directions'>4612 S. Mason St., Suite 120, Fort Collins, CO 80525</a><br><b>Happy Hour Times:</b><br>Sunday:<br>Monday:<br>Tuesday:<br>Wednesday:<br>Thursday:<br>Friday:<br>Saturday:<br><b>Happy Hour Deals:</b><br>"]
 
 
+  
+  //Remove old pins
+  for(i=0;i<marker.length;i++) {
+    map.removeLayer(marker[i]);
+    }  
+
+
   // Loop through variables and create pins
   for(i=0; i<gps.length; i++) {
+
+
      
   L.marker([gps[i][0], gps[i][1]],{icon: icc[i]}).addTo(mymap)
     .bindPopup(pop[i]);    
