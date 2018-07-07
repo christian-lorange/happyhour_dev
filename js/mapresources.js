@@ -38,7 +38,9 @@ var hhicon = new LeafIcon({iconUrl: 'img/hh.png'}),
   // Define pin colors to use
     var now = new Date();
     var d = now.getDay();
-    var today = new Date().getHours();
+   var today1 = new Date().getHours()
+   var today2 = new Date().getMinutes()/60;
+   var today = today1+today2;
 
     var icc = [nothhicon,nothhicon]; range = 104;
 
@@ -50,7 +52,7 @@ var hh = {0:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:1
             icc[i]=hhicon;   //now
             } else if (today >=hh[i][d][1]-1 && today <= hh[i][d][1]) {
             icc[i]=soonhhicon;  //soon
-            } else if (today >=hh[i][d][2]-1 && today <= hh[i][d][2]) {
+            } else if (today >=hh[i][d][2]-1&& today <= hh[i][d][2]) {
             icc[i]=endinghhicon;  //ending
             } else {icc[i]=nothhicon;}
 
