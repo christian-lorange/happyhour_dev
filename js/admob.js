@@ -22,7 +22,7 @@ document.addEventListener('deviceready', function() {
   admob.interstitial.config({
     id: admobid.interstitial,
     isTesting: false,
-    autoShow: false,
+    autoShow: true,
   })
   admob.interstitial.prepare()
 
