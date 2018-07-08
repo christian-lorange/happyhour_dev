@@ -173,7 +173,7 @@ gps=char(str);
 gps=gps(1:end-1);
 gps=[gps;"];"];
 
-filePh = fopen('gps.html','w');
+filePh = fopen('gps.txt','w');
 fprintf(filePh,'%s\n',gps{:});
 fclose(filePh);
 
