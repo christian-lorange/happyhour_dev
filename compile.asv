@@ -166,24 +166,23 @@ for i=1:height(data)
 
 end
 
-gps=["var gps=[";gps];
+gps=["var gps=[",gps,"]"]
 
-str = strjoin(gps);
-gps=char(str);
-gps=gps(1:end-1);
-gps=[gps;"];"];
 
-filePh = fopen('gps.html','w');
+filePh = fopen('gps.txt','w');
 fprintf(filePh,'%s\n',gps{:});
 fclose(filePh);
 
+fid = fopen('gps.txt','rt') ;
+X = fread(fid) ;
+fclose(fid) ;
+X = char(X.') ;
+% replace string S1 with string S2
+Y = strrep(X, '] , ]', ']]');
+fid2 = fopen('gps.html','wt');
+fwrite(fid2,Y) ;
+fclose (fid2) ;
 
 
 
 
-
-%% Call system commands to combine files
-
-system('type r1.txt hhjs.txt r2.txt >js/resources.js')
-
-system('type mr1.txt range.txt hhjs.txt mr2.txt gps.txt mr3.txt comp.txt mr4.txt >js/mapresources.js')

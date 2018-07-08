@@ -1,0 +1,94 @@
+
+
+
+$(function(){
+      
+var $filterCheckboxes = $('input[type="checkbox"]');
+
+$filterCheckboxes.on('change', function() {
+
+  var selectedFilters = {};
+
+  $filterCheckboxes.filter(':checked').each(function() {
+
+    if (!selectedFilters.hasOwnProperty(this.name)) {
+      selectedFilters[this.name] = [];
+    }
+
+    selectedFilters[this.name].push(this.value);
+
+  });
+
+  // create a collection containing all of the filterable elements
+  var $filteredResults = $('.venue');
+
+  // loop over the selected filter name -> (array) values pairs
+  $.each(selectedFilters, function(name, filterValues) {
+
+    // filter each .venue element
+    $filteredResults = $filteredResults.filter(function() {
+
+      var matched = false,
+        currentFilterValues = $(this).data('category').split(' ');
+
+      // loop over each category value in the current .venue's data-category
+      $.each(currentFilterValues, function(_, currentFilterValue) {
+
+        // if the current category exists in the selected filters array
+        // set matched to true, and stop looping. as we're ORing in each
+        // set of filters, we only need to match once
+
+        if ($.inArray(currentFilterValue, filterValues) != -1) {
+          matched = true;
+          return false;
+        }
+      });
+
+      // if matched is true the current .venue element is returned
+      return matched;
+
+    });
+  });
+
+  $('.venue').hide().filter($filteredResults).show();
+
+});
+
+
+    });
+
+
+  setTimeout(function(){
+ $("#venues").load( "https://rawgit.com/christian-lorange/happyhour_dev/master/hh.html" );
+  },200);
+
+ 
+  function days() {
+
+
+ 
+
+
+  setTimeout(function(){
+
+   $("#modal-content").load("https://rawgit.com/christian-lorange/happyhour_dev/master/cards.html");
+  
+   var d = new Date();
+   var n = d.getDay();
+
+   var now = new Date();
+   var l = now.getDay();
+   var today1 = new Date().getHours()
+   var today2 = new Date().getMinutes()/60;
+   var today = today1+today2;
+
+
+   var weekday=new Array(7);
+       weekday[0]="sunday";
+       weekday[1]="monday";
+       weekday[2]="tuesday";
+       weekday[3]="wednesday";
+       weekday[4]="thursday";
+       weekday[5]="friday";
+       weekday[6]="saturday";
+
