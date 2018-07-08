@@ -18,14 +18,14 @@ s13='</span></div>';
 
 
 
-complete=[];
+v=[];
 
 for i=1:height(data)
   
     
     venues=strcat(s1,char(table2array(data(i,56))),s2,num2str(i),s3,char(table2array(data(i,1))),s4,char(table2array(data(i,57))),s5,char(table2array(data(i,36))),s6,char(table2array(data(i,37))),s7,char(table2array(data(i,38))),s8,char(table2array(data(i,39))),s9,char(table2array(data(i,40))),s10,char(table2array(data(i,41))),s11,char(table2array(data(i,42))),s12,char(table2array(data(i,55))),s13);
     
-    complete=[complete;{venues}];
+    v=[v;{venues}];
     
 end
 
