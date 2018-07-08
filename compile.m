@@ -71,7 +71,7 @@ hhjs=strcat('var hh = {',hhjs,'};');
 
 s1='<b>Name:</b>'; %{Name}
 s2='<br><b>Address:</b><a href="http://maps.google.com/?q=';% {Location}
-s2b='" target="_blank" title="Directions">';
+s2b='" target="_system" title="Directions">';
 s3='</a><br><b>Happy Hour Times:</b><br>Sunday:';%{Sun Start}-{Sun End}
 s4='<br>Monday:';%{Mon Start}-{Mon End}
 s5='<br>Tuesday:';%{Tues Start}-{Tues End}

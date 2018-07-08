@@ -18,7 +18,8 @@
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
   <script type="text/javascript" src="js/hh.js"></script> 
-  <script type="text/javascript" src="https://rawgit.com/christian-lorange/happyhour_dev/master/js/resources.js"></script> 
+  <script type="text/javascript" src="https://rawgit.com/christian-lorange/happyhour_dev/master/js/resources.js"></script>
+  <!--<script type="text/javascript" src="js/resources.js"></script> -->
 
 
   <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -69,7 +70,14 @@ function showSlides(n) {
   }
 </script>
 
-
+<!--Trigger interstitial add after 30 seconds -->
+<script type="text/javascript">
+setTimeout("CallButton()",30000)
+function CallButton()
+{
+   admob.interstitial.show() 
+}
+</script>
 
 
 </head>
@@ -244,9 +252,18 @@ function showSlides(n) {
   
 </div>
 
+<script>
+setInterval(function() {
+    refresh()
+}, 60 * 1000*5); // refresh every 5 minutes
 
+function refresh() {
+    location.reload();
+}
+</script>
 
-<table align="center" width="100vw">
+<button onclick="refresh()" id="refresh_btn">Refresh Results</button>
+<table align="center" width="100vw;" style="margin-bottom: 10px;">
   <tr>
     <td style="padding-right: 10px">
       <input type="text" id="Search" onkeyup="myFunction()" placeholder="Filter by Term" title="Type in a name" style="text-align: center;">
@@ -289,5 +306,6 @@ function showSlides(n) {
   </script>
   <script type="text/javascript" src="cordova.js"></script>
   <script src="js/admob.js"></script>
+  <script type="text/javascript" src="phonegap.js"></script>
 </body>
 </html>

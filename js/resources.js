@@ -58,14 +58,15 @@ $filterCheckboxes.on('change', function() {
     });
 
 
-
+  setTimeout(function(){
+ $("#venues").load( "https://rawgit.com/christian-lorange/happyhour_dev/master/hh.html" );
+  },200);
 
  
   function days() {
 
 
-  $("#venues").load( "https://rawgit.com/christian-lorange/happyhour_dev/master/hh.html" );
-
+ 
 
 
   setTimeout(function(){
@@ -158,7 +159,7 @@ function showSlides(n) {
   }
 
 
-    }, 500);
+    }, 800);
 
 }
 

@@ -79,16 +79,16 @@ text-align: right;
 font-style: italic;
 padding-left:7vw;}
 
-.icon {width:40%;
+.icon {
 	text-align: center;
   float:right;
 
 }
 
-.icon img {width:10vw;
+.icon img {width:7vw;
 padding-top: 5px;
-padding-left: 10px;
-padding-right: 10px;
+padding-left: 3px;
+padding-right: 3px;
 padding-bottom: 10px;}
 
 img.filter {width:10vw;
@@ -283,7 +283,7 @@ h5.mb-0 {
    font-weight: bolder
 }
 
-.footer p {font-size: 0.8em;}
+.footer p {font-size: 0.6em;}
 
 .footer img {margin-right: 16px;
     margin-left: 2px;}
@@ -340,3 +340,15 @@ h5.mb-0 {
     background:#3074a4;
     color:#fff;
     }
+
+#refresh_btn {
+  width:90%;
+  margin-bottom: 5px;
+  height: 5vh;
+  background-color: rgb(173, 197, 237);
+  font-weight: bolder;
+  border-radius: 10px;
+  margin-left: 5%;
+  font-size: 1.4em;  
+
+}
