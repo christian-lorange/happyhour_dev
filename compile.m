@@ -39,7 +39,7 @@ fclose(fid) ;
 X = char(X.') ;
 % replace string S1 with string S2
 Y = strrep(X, '@', '"') ;
-fid2 = fopen('v.txt','wt') ;
+fid2 = fopen('hh.html','wt') ;
 fwrite(fid2,Y) ;
 fclose (fid2) ;
 
