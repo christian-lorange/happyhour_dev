@@ -166,6 +166,7 @@ text-align: right;}
 .mySlides {
   display: none;
   overflow: scroll;
+  max-height: 70vh;
 }
 
 /* Next & previous buttons */
