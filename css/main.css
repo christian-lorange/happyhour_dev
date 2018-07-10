@@ -165,6 +165,7 @@ text-align: right;}
 /* Hide the slides by default */
 .mySlides {
   display: none;
+  overflow: scroll;
 }
 
 /* Next & previous buttons */
