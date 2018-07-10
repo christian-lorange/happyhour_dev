@@ -207,6 +207,12 @@ fclose(filePh);
 
 %% Call system commands to combine files
 
-system('type r1.txt hhjs.txt r2.txt >js/resources.js')
 
-system('type mr1.txt range.txt hhjs.txt mr2.txt gps.txt mr3.txt comp.txt mr4.txt >js/mapresources.js')
+filePh = fopen('update.txt','w');
+date=['//file updated at ', datestr(now,'mm/dd/yy HH:MM:SS.FFF')];
+fprintf(filePh,'%s\n',date);
+fclose(filePh);
+
+system('type update.txt r1.txt hhjs.txt r2.txt >js/resources.js')
+
+system('type update.txt mr1.txt range.txt hhjs.txt mr2.txt gps.txt mr3.txt comp.txt mr4.txt >js/mapresources.js')
