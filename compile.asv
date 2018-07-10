@@ -118,7 +118,7 @@ modal=[];
 for i=1:height(data)
     
     
-    if (table2array(data(i,47)))=="true" | (table2array(data(i,48)))=="true";
+    if table2cell(data(i,47))=="true";
         s10='<br><b>Happy Hour Deals:</b><br>';%{Description}
     else
         sl0='';
@@ -134,7 +134,7 @@ else
 end
   
     
-    cards=strcat(s1,char(table2array(data(i,1))),s2,char(table2array(data(i,6))),s2b,char(table2array(data(i,6))),s3,char(table2array(data(i,36))),s4,char(table2array(data(i,37))),s5,char(table2array(data(i,38))),s6,char(table2array(data(i,39))),s7,char(table2array(data(i,40))),s8,char(table2array(data(i,41))),s9,char(table2array(data(i,42))),s10,char(table2array(data(i,21))),char(s10b),char(s10c),s11,"""",",");
+    cards=strcat(s1,char(table2array(data(i,1))),s2,char(table2array(data(i,6))),s2b,char(table2array(data(i,6))),s3,char(table2array(data(i,36))),s4,char(table2array(data(i,37))),s5,char(table2array(data(i,38))),s6,char(table2array(data(i,39))),s7,char(table2array(data(i,40))),s8,char(table2array(data(i,41))),s9,char(table2array(data(i,42))),char(s10),char(table2array(data(i,21))),char(s10b),char(s10c),s11);
     
     complete=[complete;{cards}];
     
