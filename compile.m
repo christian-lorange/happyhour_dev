@@ -169,8 +169,9 @@ X = char(X.') ;
 Y = strrep(X, ' /n ', '"<br>');
 Z = strrep(Y, '<br>",</div>', '<br></div>');
 ZZ = strrep(Z, '.3', ':30');
+a = strrep(ZZ, '",', '');
 fid2 = fopen('cards.html','wt');
-fwrite(fid2,ZZ) ;
+fwrite(fid2,a) ;
 fclose (fid2) ;
 
 
