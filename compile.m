@@ -39,8 +39,9 @@ fclose(fid) ;
 X = char(X.') ;
 % replace string S1 with string S2
 Y = strrep(X, '@', '"') ;
+Z = strrep(Y, '.3', ':30') ;
 fid2 = fopen('hh.html','wt') ;
-fwrite(fid2,Y) ;
+fwrite(fid2,Z) ;
 fclose (fid2) ;
 
 
@@ -167,8 +168,9 @@ X = char(X.') ;
 % replace string S1 with string S2
 Y = strrep(X, ' /n ', '"<br>');
 Z = strrep(Y, '<br>",</div>', '<br></div>');
+ZZ = strrep(Z, '.3', ':30');
 fid2 = fopen('cards.html','wt');
-fwrite(fid2,Z) ;
+fwrite(fid2,ZZ) ;
 fclose (fid2) ;
 
 
