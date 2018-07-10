@@ -119,14 +119,14 @@ modal=[];
 for i=1:height(data)
     
     
-    if strcmp(char(table2cell(data(i,47))),'true');
+    if strcmp(char(table2cell(data(i,47))),'true')==1;
         s10='<br><b>Happy Hour Deals:</b><br>';%{Description}
     else
         sl0='';
     end
     
     
-    if strcmp((table2array(data(i,61))),'1')
+    if ((table2array(data(i,61))))==1
    s10b='<br><b>Kids Deals:</b><br>';
    s10c= char(table2array(data(i,63)));
 else
@@ -197,8 +197,11 @@ filePh = fopen('gps.txt','w');
 fprintf(filePh,'%s\n',gps{:});
 fclose(filePh);
 
-
-
+%% Calculate range
+filePh = fopen('range.txt','w');
+range=['range = ',num2str(height(data)),';']
+fprintf(filePh,'%s\n',range);
+fclose(filePh);
 
 
 
