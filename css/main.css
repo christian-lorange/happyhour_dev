@@ -441,3 +441,7 @@ input#Search{
   outline: none;
   color: black;
 }
+
+.leaflet-control-zoom.leaflet-bar.leaflet-control {
+  display: none !important;
+}
